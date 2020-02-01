@@ -4,9 +4,9 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import Listing
 
 def index(request):
-    listings = Listing.objects.all()
+    listings = Listing.objects.order_by('-list_date')
 
-    paginator = Paginator(listing, 3)
+    paginator = Paginator(listings, 6)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
 
@@ -16,7 +16,7 @@ def index(request):
 
     return render(request, 'listings/listings.htm', context)
 
-def listing(request, listing_id):
+def listing(request,listing_id):
     return render(request, 'listings/listing.htm')
 
 def search(request):
