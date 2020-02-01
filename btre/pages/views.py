@@ -15,4 +15,14 @@ def index(request):
     return render(request, 'pages/index.htm', context)
 
 def about(request):
-    return render(request, 'pages/about.htm') 
+    # Get Realtors
+    realtors = Realtor.objecst.order_by('-hire_date')
+
+    # Get MVP
+    mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
+
+    context = {
+        'realtors': realtors
+    }
+
+    return render(request, 'pages/about.htm', context) 
