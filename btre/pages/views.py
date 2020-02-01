@@ -16,13 +16,14 @@ def index(request):
 
 def about(request):
     # Get Realtors
-    realtors = Realtor.objecst.order_by('-hire_date')
+    realtors = Realtor.objects.order_by('-hire_date')
 
     # Get MVP
     mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
 
     context = {
-        'realtors': realtors
+        'realtors': realtors,
+        'mvp_realtors': mvp_realtors
     }
 
     return render(request, 'pages/about.htm', context) 
