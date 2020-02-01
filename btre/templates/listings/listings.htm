@@ -94,7 +94,7 @@
             <ul class="pagination">
               {% if listings.has_previous %}
                 <li class="page-item">
-                  <a href="?page = {{listings.previous_page_number}}" class="page-link">&laquo;</a>
+                  <a href="?page={{listings.previous_page_number}}" class="page-link">&laquo;</a>
                 </li>
               {% else %}
                 <li class="page-item disabled">
@@ -102,21 +102,19 @@
                 </li>  
               {% endif %}
               {% for i in listings.paginator.page_range %}
-                {% if listings.numbers == i %}
+                {% if listings.number == i %}
                   <li class="page-item active">
                     <a class="page-link">{{ i }}</a>
                   </li>
                   {% else %}
                   <li class="page-item">
-                    <a href="?page = {{ i }}" class="page-link">{{ i }}</a>
+                    <a href="?page={{i}}" class="page-link">{{ i }}</a>
                   </li>
                 {% endif %}
               {% endfor %}
-              {% if listings.has_other_pages %}
-            <ul class="pagination">
-              {% if listings.has_previous %}
+              {% if listings.has_next %}
                 <li class="page-item">
-                  <a href="?page = {{listings.next_page_number}}" class="page-link">&raquo;</a>
+                  <a href="?page={{listings.next_page_number}}" class="page-link">&raquo;</a>
                 </li>
               {% else %}
                 <li class="page-item disabled">
@@ -129,5 +127,4 @@
       </div>
     </div>
   </section>
-
 {% endblock %}
