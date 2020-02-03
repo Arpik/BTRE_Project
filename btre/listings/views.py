@@ -72,7 +72,9 @@ def search(request):
         'state_choices': state_choices,
         'price_choices': price_choices,
         'bedroom_choices': bedroom_choices,
-        'listings': queryset_list
+        'listings': queryset_list,
+        # For making searched value visible after search.
+        'values': request.GET  
     }
 
     return render(request, 'listings/search.htm', context)
