@@ -24,7 +24,12 @@ def register(request):
                     messages.error(request, 'That email is taken')
                     return redirect('register')
                 else:
-                    return
+                    # Registration succeed
+                    user = User.objects.create_user(username = username, password = password, email=email,
+                    first_name=first_name, last_name=last_name)
+                    user.save()
+                    messages.success(request, 'You are now registered and can log in.')
+                    return redirect('login')
         else:
             messages.error(request, 'Passwords do not match')
             return redirect('register')
@@ -36,7 +41,7 @@ def login(request):
         # Login User 
         return
     else:
-        return render(request, 'accounts/register.htm')
+        return render(request, 'accounts/login.htm')
 
     return render(request, 'accounts/login.htm')
 
