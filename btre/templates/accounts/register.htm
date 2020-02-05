@@ -1,5 +1,8 @@
 {% extends 'base.htm' %}
 
+{% block title %} | Register Account  {% endblock %}
+
+
 {% block content %}
 
 <section id="register" class="bg-light py-5">
@@ -12,11 +15,13 @@
                 <i class="fas fa-user-plus"></i> Register</h4>
             </div>
             <div class="card-body">
+              
               <!-- Alerts -->
               {% include 'partials/_alerts.htm' %}
-                <form action="{% url 'register' %}" method = "POST" >
-                  {% csrf_token %}
-                  <div class="form-group">
+              
+              <form action="{% url 'register' %}" method = "POST" >
+              {% csrf_token %}
+                <div class="form-group">
                   <label for="first_name">First Name</label>
                   <input type="text" name="first_name" class="form-control" required>
                 </div>
